@@ -1,3 +1,9 @@
+<?php
+	SESSION_START();
+	$_SESSION['attempt'] = "0";
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -23,20 +29,22 @@
 				<a href="#" class="hamburger"></a>
 				<nav>
 					<ul>
-						<li><a href="#">Buy</a></li>
-						<li><a href="#">Rent</a></li>
-						<li><a href="#">Sell</a></li>
+						<li><a href="#">Asistentes</a></li>
 						<li><a href="#">Acerca</a></li>
 						<li><a href="#">Contacto</a></li>
 					</ul>
-					<a href="/enfermeras/login.html" class="login_btn">Login</a>
+					<?php if(isset($_SESSION['user'])) : ?>
+							<a href="/enfermeras/logout.php" class="login_btn">Cerrar sesión</a>
+					<?php else : ?>
+							<a href="/enfermeras/login.php" class="login_btn">Iniciar sesión</a>	
+					<?php endif; ?>
 				</nav>
 			</div>
 		</header><!--  end header section  -->
 
 			<section class="caption">
-				<h2 class="caption">Find You Dream Home</h2>
-				<h3 class="properties">Appartements - Houses - Mansions</h3>
+				<h2 class="caption">Cuidado a tu alcance</h2>
+				<h3 class="properties">Asistencia médica a tu alcance</h3>
 			</section>
 	</section><!--  end hero section  -->
 

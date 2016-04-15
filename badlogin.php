@@ -23,7 +23,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 				$('.contact-text').fadeOut('slow', function(c){
 					$('.contact-text').remove();
 				});
-				});	  
+				});
 			});
 </script>
 <script>$(document).ready(function(c) {
@@ -44,16 +44,17 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 			<div class="signin">
 			 <h3>Ingresa</h3>
 			 <h4>Ingresa a tu cuenta</h4>
-			<form>
+			<form action="connect.php" method="POST">
 				<div class="mess">
-				  <input type="text" class="user"  placeholder="Usuario" required="">
+				  <input type="text" class="user"  placeholder="Usuario" required="" name="user">
 				  <span class="mess1"> </span>
 				</div>
 				<div class="mess">
-				  <input type="password" class="lock"  placeholder="Contraseña" required="">
+				  <input type="password" class="lock"  placeholder="Contraseña" required="" name="pass">
 				  <span class="mess2"> </span>
 				</div>
 				<input type="submit" value="Ingresa">
+				</form>
 				<div class="lost">
 				     <span class="checkbox1">
 				       <label class="checkbox"><input type="checkbox" name="" checked=""><i> </i>No salir de la cuenta</label>
@@ -63,9 +64,9 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 				      </div>
 				    <div class="clear"> </div>
 				</div>
-			</form>
             <p>
             <div class="clear"> </div>
+            Usuario o contraseña incorrecto!
             <a href="/enfermeras/">Regresar al sitio</a>
             </p>
 			</div>
@@ -77,9 +78,9 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 			   <h3>O bien, abre una cuenta</h3>
 			   <h4>Es gratis y lo será siempre</h4>
 			  <form>
-			  	 <input class="email" type="text" placeholder="Correo Electrónico" required="">
-			  	  <input class="user" type="text" placeholder="Usuario" required="">
-			  	  <input class="lock" type="password" placeholder="Contraseña" required="">
+			  	 <input class="email" type="text" placeholder="Correo Electrónico" required="" name="mail">
+			  	  <input class="user" type="text" placeholder="Usuario" required="" name="user">
+			  	  <input class="lock" type="password" placeholder="Contraseña" required="" name="pass">
 			  	  <input class="lock" type="password" placeholder="Contraseña" required="">
                   <p>Al hacer clic en "Abrir una cuenta", aceptas las Condiciones y confirmas que leíste nuestra Política de datos, incluido el uso de cookies.</p>
                   <input type="submit" value="Abrir una cuenta">
