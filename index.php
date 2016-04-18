@@ -25,13 +25,13 @@
 	<section class="hero">
 		<header>
 			<div class="wrapper">
-				<a href="#"><img src="img/logo.png" class="logo" alt="" titl=""/></a>
+				<a href="index.php"><img src="img/logo.png" class="logo" alt="logo" titl=""/></a>
 				<a href="#" class="hamburger"></a>
 				<nav>
 					<ul>
-						<li><a href="#">Asistentes</a></li>
-						<li><a href="#">Acerca</a></li>
-						<li><a href="#">Contacto</a></li>
+						<li><a href="asistentes.php">Asistentes</a></li>
+						<li><a href="acerca.php">Acerca</a></li>
+						<li><a href="contacto.php">Contacto</a></li>
 					</ul>
 					<?php if(isset($_SESSION['user'])) : ?>
 							<a href="/enfermeras/logout.php" class="login_btn">Cerrar sesión</a>
@@ -197,7 +197,7 @@
 				</li>
 			</ul>
 			<div class="more_listing">
-				<a href="#" class="more_listing_btn">View More Listings</a>
+				<a href="#" class="more_listing_btn">Volver arriba</a>
 			</div>
 		</div>
 	</section>	<!--  end listing section  -->

@@ -61,7 +61,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 			<div class="signin">
 			 <h3>Ingresa</h3>
 			 <h4>Ingresa a tu cuenta</h4>
-			<form action="connect.php" method="POST">
+			 <form action="connect_mysqli.php" method="POST">
 				<div class="mess">
 				  <input type="text" class="user"  placeholder="Usuario" required="" name="user">
 				  <span class="mess1"> </span>
@@ -70,8 +70,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 				  <input type="password" class="lock"  placeholder="Contraseña" required="" name="pass">
 				  <span class="mess2"> </span>
 				</div>
-				<input type="submit" value="Ingresa">
-				</form>
+				<input type="submit"  name="login" value="Login">
+			  	</form>
 				<?php if($_SESSION['attempt'] > 0) : ?>
 					<div class="lost, badlogin">
 						El nombre se usuario o contraseña son incorrectos, por favor inténtelo nuevamente.
@@ -98,7 +98,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 		   <div class="signup">
 			   <h3>O bien, abre una cuenta</h3>
 			   <h4>Es gratis y lo será siempre</h4>
-			  <form>
+			  <form action="register.php" method="POST">
 			  	 <input class="email" type="text" placeholder="Correo Electrónico" required="" name="mail">
 			  	  <input class="user" type="text" placeholder="Usuario" required="" name="user">
 			  	  <input class="lock" type="password" placeholder="Contraseña" required="" name="pass">
