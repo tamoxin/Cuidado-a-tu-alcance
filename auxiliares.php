@@ -7,7 +7,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	
+
 	<style>
 		.title {
 			width: 30%;
@@ -15,7 +15,7 @@
 			background-size: 100% auto !important;
 		}
 	</style>
-	
+
 	<title>Cuidado a tu alcance</title>
     <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
 	<meta charset="utf-8">
@@ -31,16 +31,17 @@
 </head>
 <body>
 
-	<section class="hero">
+	<section>
 		<header>
 			<div class="wrapper">
-				<a href="index.php"><img src="img/logo.png" class="title" alt="logo" titl=""/></a>
+				<a href="index.php"><img src="img/logo.png" class="title" alt="" titl=""/></a>
+				<a href="#" class="hamburger"></a>
 				<nav>
 					<ul>
 						<?php if(isset($_SESSION['user'])) : ?>
+						<li><a href="index.php">Inicio</a></li>
 						<li><a href="profile.php">Perfil</a></li>
 						<?php endif; ?>
-						<li><a href="auxiliares.php">Auxiliares</a></li>
 						<li><a href="acerca.php">Acerca</a></li>
 						<li><a href="contacto.php">Contacto</a></li>
 					</ul>
@@ -52,11 +53,6 @@
 				</nav>
 			</div>
 		</header><!--  end header section  -->
-
-			<section class="caption">
-				<h2 class="caption">Cuidado a tu alcance</h2>
-				<h3 class="properties">Auxiliares de medicina a tu alcance</h3>
-			</section>
 	</section><!--  end hero section  -->
 
 
@@ -150,7 +146,7 @@
 					<a href="#">
 						<img src="img/property_2.jpg" alt="" title="" class="property_img"/>
 					</a>
-					<span class="price">$10070</span>
+					<span class="price">$1000</span>
 					<div class="property_details">
 						<h1>
 							<a href="#">Fuisque dictum tortor at purus libero</a>

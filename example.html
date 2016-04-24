@@ -1,25 +1,12 @@
-<?php
-	SESSION_START();
-	if(isset($_SESSION['user'])){
-		$id = $_SESSION['id'];
-	}
-	else{
-        header('Location: index.php');
-    }
-?>
-
+<style>
+	.profile {
+		background: #00bcd4; 
+	}	
+</style>
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
-
-	<style>
-		.profile {
-			background: #00bcd4; 
-		}	
-	</style>
-	
 	<title>Cuidado a tu alcance</title>
     <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
 	<meta charset="utf-8">
@@ -40,11 +27,11 @@
 	<section>
 		<header>
 			<div class="wrapper">
-
+				<a href="index.php"><img src="img/logo.png" class="logo" alt="" titl=""/></a>
 				<a href="#" class="hamburger"></a>
 				<nav>
 					<ul>
-						<li><a href="auxiliares.php">Auxiliares</a></li>
+						<li><a href="asistentes.php">Asistentes</a></li>
 						<li><a href="acerca.php">Acerca</a></li>
 						<li><a href="contacto.php">Contacto</a></li>
 					</ul>
@@ -73,7 +60,7 @@
             <div class="form-row">
                 <label>
                     <span>Nombre completo</span>
-                    <input type="text" name="name" value="'$row[11]'">
+                    <input type="text" name="name">
                 </label>
             </div>
 
@@ -87,7 +74,7 @@
 			<div class="form-row">
                 <label>
                     <span>Edad</span>
-                    <input type="text" name="age" value="0">
+                    <input type="text" name="age">
                 </label>
             </div>
 			
@@ -141,7 +128,7 @@
             </div>
 
             <div class="form-row">
-                <button type="submit" name="guardar">Guardar perfil</button>
+                <button type="submit">Submit Form</button>
             </div>
 
         </form>

@@ -103,6 +103,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 			  	  <input class="user" type="text" placeholder="Usuario" required="" name="user">
 			  	  <input class="lock" type="password" placeholder="Contraseña" required="" name="pass">
 			  	  <input class="lock" type="password" placeholder="Contraseña" required="">
+			  	  <input class="code" type="text" placeholder="Código" required="" name="code">
                   <p>Al hacer clic en "Abrir una cuenta", aceptas las Condiciones y confirmas que leíste nuestra Política de datos, incluido el uso de cookies.</p>
                   <input type="submit" value="Abrir una cuenta">
 			  </form>

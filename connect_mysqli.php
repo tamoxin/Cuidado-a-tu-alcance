@@ -25,6 +25,8 @@ if(isset($_POST['login'])) {
     
     if($check_user > 0) {
         $_SESSION['user'] = $username;
+        $id =  mysql_fetch_row(mysqli_query($con, "select user_id from users where username='$username' AND password='$pass'"))[0];
+        $_SESSION['id'] = $id;
         header('Location: profile.php');
     }
     

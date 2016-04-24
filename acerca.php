@@ -7,6 +7,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
+	<style>
+		.title {
+			width: 30%;
+            height: auto;
+			background-size: 100% auto !important;
+		}
+	</style>
+
 	<title>Cuidado a tu alcance</title>
     <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
 	<meta charset="utf-8">
@@ -25,12 +34,15 @@
 	<section>
 		<header>
 			<div class="wrapper">
-				<a href="index.php"><img src="img/logo.png" class="logo" alt="" titl=""/></a>
+				<a href="index.php"><img src="img/logo.png" class="title" alt="" titl=""/></a>
 				<a href="#" class="hamburger"></a>
 				<nav>
 					<ul>
-						<li><a href="asistentes.php">Asistentes</a></li>
-						<li><a href="acerca.php">Acerca</a></li>
+						<?php if(isset($_SESSION['user'])) : ?>
+						<li><a href="index.php">Inicio</a></li>
+						<li><a href="profile.php">Perfil</a></li>
+						<?php endif; ?>
+						<li><a href="auxiliares.php">Auxiliares</a></li>
 						<li><a href="contacto.php">Contacto</a></li>
 					</ul>
 					<?php if(isset($_SESSION['user'])) : ?>
@@ -46,6 +58,12 @@
 	<!--Modify here-->
 	<section class="listings">
 		<div class="wrapper">
+			<h2>¿De qué trata el proyecto?</h2>
+			<p>Es un proyecto creado por 9 alumnos del Tecnológico de Monterrey Campus Tampico, que encontraron un área de oportunidad para el emprendimiento social. </p>
+			<br>
+			<p>Actualmente en Tampico, Tamaulipas, existe una gran demanda de auxiliares de enfermeria, pero por la falta de algún centro o agencia de estos, la gente que busca este servicio no puede contratarlos. Debido a esta problemática se crea "Cuidado a tu alcance".</p>
+			<br>
+			<p>El proyecto consiste en la elaboración de una página web que busca vincular a los egresados de los talleres impartidos en la zona, con situaciones económicas vulnerables, con posibles clientes que requieran algún servicio relacionado con enfermería.</p>
 		</div>
 	</section>	<!--  end listing section  -->
 
