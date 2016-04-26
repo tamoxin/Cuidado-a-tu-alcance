@@ -24,16 +24,18 @@ if(isset($_POST['login'])) {
     $check_user = mysqli_num_rows($run_user); 
     
     if($check_user > 0) {
-        $_SESSION['user'] = $username;
-        $id =  mysql_fetch_row(mysqli_query($con, "select user_id from users where username='$username' AND password='$pass'"))[0];
-        $_SESSION['id'] = $id;
+        while($arr = mysqli_fetch_array($run_user, MYSQLI_ASSOC)) {
+            $_SESSION['id']= $arr["user_id"];
+            $_SESSION['user'] = $arr["username"];
+        }
+        mysql_close();
         header('Location: profile.php');
     }
-    
     else {
         $_SESSION['attempt'] = $_SESSION['attempt'] + 1;
+        mysql_close();
         header('Location: login.php');
-    }
+    }   
 }
 
 ?>

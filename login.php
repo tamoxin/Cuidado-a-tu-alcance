@@ -1,9 +1,3 @@
-<!--Author: W3layouts
-Author URL: http://w3layouts.com
-License: Creative Commons Attribution 3.0 Unported
-License URL: http://creativecommons.org/licenses/by/3.0/
--->
-
 <?php
 	SESSION_START();
 	if(isset($_SESSION['user'])){
@@ -11,6 +5,9 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	}
 	if(!isset($_SESSION['attempt'])){
 		$_SESSION['attempt'] = 0;
+	}
+	if(!isset($_SESSION['wrong_code'])){
+		$_SESSION['wrong_code'] = 0;
 	}
 ?>
 
@@ -23,34 +20,26 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <!DOCTYPE HTML>
 <html>
 <head>
-<title>Ingresa a tu perfil</title>
-<link href="css/style.css" rel="stylesheet" type="text/css" media="all"/>
+	<title>Ingresa a tu perfil</title>
+	<link href="css/style.css" rel="stylesheet" type="text/css" media="all"/>
 
-<!-- Custom Theme files -->
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
-<meta name="keywords" content="Creative Forms Responsive, Login form web template, Sign up Web Templates, Flat Web Templates, Login signup Responsive web template, Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
-<!--google fonts-->
-<link href='//fonts.googleapis.com/css?family=Roboto+Condensed:400,300,700' rel='stylesheet' type='text/css'>
-<!--google fonts-->
-<script src="js/jquery.min.js"></script>
-<script>$(document).ready(function(c) {
-			$('.contact-close').on('click', function(c){
-				$('.contact-text').fadeOut('slow', function(c){
-					$('.contact-text').remove();
+	<!-- Custom Theme files -->
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
+	<meta name="keywords" content="Creative Forms Responsive, Login form web template, Sign up Web Templates, Flat Web Templates, Login signup Responsive web template, Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+	<!--google fonts-->
+	<link href='//fonts.googleapis.com/css?family=Roboto+Condensed:400,300,700' rel='stylesheet' type='text/css'>
+	<!--google fonts-->
+	<script src="js/jquery.min.js"></script>
+	<script>$(document).ready(function(c) {
+				$('.contact-close').on('click', function(c){
+					$('.contact-text').fadeOut('slow', function(c){
+						$('.contact-text').remove();
+					});
+					});
 				});
-				});
-			});
-</script>
-<script>$(document).ready(function(c) {
-		$('.small-contact-close').on('click', function(c){
-			$('.small-contact-text').fadeOut('slow', function(c){
-				$('.small-contact-text').remove();
-			});
-			});	  
-		});
-   </script>
+	</script>
 </head>
 <body>
 <!--header strat here-->
@@ -98,15 +87,19 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 		   <div class="signup">
 			   <h3>O bien, abre una cuenta</h3>
 			   <h4>Es gratis y lo será siempre</h4>
-			  <form action="register.php" method="POST">
+			  <form action="register.php" method="POST" >
 			  	 <input class="email" type="text" placeholder="Correo Electrónico" required="" name="mail">
 			  	  <input class="user" type="text" placeholder="Usuario" required="" name="user">
 			  	  <input class="lock" type="password" placeholder="Contraseña" required="" name="pass">
-			  	  <input class="lock" type="password" placeholder="Contraseña" required="">
-			  	  <input class="code" type="text" placeholder="Código" required="" name="code">
+			  	  <input class="code" type="text" placeholder="Código" required="" name="code" maxlength="5">
                   <p>Al hacer clic en "Abrir una cuenta", aceptas las Condiciones y confirmas que leíste nuestra Política de datos, incluido el uso de cookies.</p>
                   <input type="submit" value="Abrir una cuenta">
 			  </form>
+			  <?php if($_SESSION['wrong_code'] > 0) : ?>
+				<div class="lost, badlogin">
+		        	El Código es incorrecto por favor inténtelo nuevamente.
+			  	</div>
+			  <?php endif; ?>
 			  <div class="clear"> </div>
               <p>
                 <a href="/enfermeras/">Regresar al sitio</a>

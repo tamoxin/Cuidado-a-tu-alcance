@@ -16,6 +16,7 @@ $password="";
 if($nombrereg&&$passreg&&$mailreg&&$codereg){
 
 	$con= mysqli_connect("localhost", $username, $password, $database) or die("Unable to connect");
+	$acentos = $con->query("SET NAMES 'utf8'");
 
 	$codigo = mysqli_real_escape_string($con,$_POST['code']);
     
@@ -30,18 +31,31 @@ if($nombrereg&&$passreg&&$mailreg&&$codereg){
 
 		$con->query($insert);
 		
-		$id =  mysql_fetch_row(mysqli_query($con, "select user_id from users where username='$nombrereg' AND password='$passreg'"))[0];
-        $_SESSION['id'] = $id;
-		$_SESSION['user'] = $nombrereg;
+		$sel_user = "select user_id from users where username='$nombrereg' AND password='$passreg'";
+    	$run_user = mysqli_query($con, $sel_user);
+		$check_user = mysqli_num_rows($run_user); 
+    
+		if($check_user > 0) {
+			while($arr = mysqli_fetch_array($run_user, MYSQLI_ASSOC)) {
+				$_SESSION['id']= $arr["user_id"];
+				$_SESSION['user'] = $arr["username"];
+			}
+			
+			$delete= "DELETE FROM codigos WHERE codigo='$codigo'";
 
-		$delete= "DELETE FROM codigos WHERE codigo='$codigo'";
+			$con->query($delete);
 
-		$con->query($delete);
-
-		header('Location: profile.php');
+			mysqli_close();
+			header('Location: profile.php');
+		}
+		else {
+			
+			$_SESSION['wrong_code'] = 1;
+			header('Location: login.php');
+		}   
     }
-
-}else{
+}
+else{
 	echo "Fill out every field";
 }
 
