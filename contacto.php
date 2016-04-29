@@ -59,26 +59,36 @@
 	</section><!--  end hero section  -->
 
 	<section class="listings">
-		<div class="wrapper">
-		<img src="http://diftampico.tamaulipas.gob.mx/images/banner-fondo.jpg" alt="esto se debería ver"></img>
+		<div class="wrapper"><center>
+		<img src="img/dif.jpg" alt=" " class="img-responsive" /><br>
+				<h1>Dirección: Afganistán #603 Col. Solidaridad Voluntad y Trabajo (Borreguera)</h1><br>
+				<h1>Tel. 305 26 94 y 305 26 95</h1></center>
 		</div>
 	</section>	<!--  end listing section  -->
 
 	<footer>
 		<div class="wrapper footer">
 			<ul>
-				<li class="">
+				<li class="links">
+					<ul>
+						<li><a href="auxiliares.php">Auxiliares</a></li>
+						<li><a href="acerca.php">Acerca</a></li>
+						<li><a href="contacto.php">Contacto</a></li>
+					</ul>
+				</li>
+
+				<li class="about">
 					<p>"Cuidado a tu alcance" consiste en la creación de una bolsa de trabajo online que vincule auxiliares de enfermería con posibles clientes para su contratación.</p>
 					<ul>
-						<li><a href="http://www.facebook.com/catualcance/" class="footer" target="_blank"><img src="img/facebook.png"></a></li>
-                        <li><a href="http://fondeadora.com/projects/cuidado-a-tu-alcance" class="footer"><img src="img/fondeadora.png"/></a></li>
+						<li><a href="http://www.facebook.com/catualcance/" class="facebook" target="_blank"></a></li>
+                        <li><a href="http://fondeadora.com/projects/cuidado-a-tu-alcance" >Fondeadora</a></li>
 					</ul>
 				</li>
 			</ul>
 		</div>
 
 		<div class="copyrights wrapper">
-			Copyright © 2015 <a href="http://pixelhint.com" target="_blank" class="ph_link" title="Download more free Templates">Pixelhint.com</a>. All Rights Reserved.
+			Copyright © 2016 <a href="index.php" target="_blank" class="ph_link" title="Cuidado a tu alcance">Cuidado a tu alcance</a>. Todos los derechos reservados.
 		</div>
 	</footer><!--  end footer  -->
 	

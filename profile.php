@@ -4,6 +4,7 @@
 	if(isset($_SESSION['user'])){
 		$id = $_SESSION['id'];
         
+        $sex = "";
         $connect = mysqli_connect("localhost","root","","enfermeras");
         $query1 = mysqli_query($connect,"select * from users where user_id='$id'");
         if (mysqli_num_rows($query1) > 0) {
@@ -29,11 +30,10 @@
 ?>
 
 
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
-
 	<style>
 		.profile {
 			background: #00bcd4; 
@@ -53,6 +53,26 @@
 
 	<script type="text/javascript" src="js/jquery.js"></script>
 	<script type="text/javascript" src="js/main.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('textarea[data-limit-rows=true]')
+            .on('keypress', function (event) {
+                var textarea = $(this),
+                    text = textarea.val(),
+                    numberOfLines = (text.match(/\n/g) || []).length + 1,
+                    maxRows = parseInt(textarea.attr('rows'));
+
+                if (event.which === 13 && numberOfLines === maxRows ) {
+                return false;
+                }
+            });
+        });
+    </script>
+    <script type="text/javascript">
+        function EnforceMaximumLength(fld,len) {
+        if(fld.value.length > len) { fld.value = fld.value.substr(0,len); }
+        }
+    </script>
 </head>
 <body>
 
@@ -94,7 +114,7 @@
                     <span>Nombre completo</span>
                     
                         <?php
-                            echo "<input type='text' name='name' value='".$name."'>";
+                            echo "<input maxlength='50' type='text' name='name' value='".$name."'>";
                         ?>
                     
                 </label>
@@ -106,10 +126,10 @@
                     
                     <?php
                         if(isset($email)) {
-                            echo "<input type='email' name='email' value='".$email."'>";
+                            echo "<input maxlength='35' type='email' name='email' value='".$email."'>";
                         }
                         else {
-                            echo "<input type='email' name='email' value=''>";
+                            echo "<input maxlength='35' type='email' name='email' value=''>";
                         }
                     ?>
                 </label>
@@ -119,30 +139,25 @@
                 <label>
                     <span>Edad</span>
                     <?php
-                        echo "<input type='text' name='age' value='".$age."'>";
+                        echo "<input maxlength='2' type='text' name='age' value='".$age."'>";
                     ?>
                 </label>
             </div>
             
             <div class="form-row">
-                <label><span>Sexo</span></label>
-                <div class="form-radio-buttons">
-
-                    <div>
+                <label>
+                    <span>Sexo</span>
+                    <div class="form-radio-buttons">
                         <label>
                             <input type='radio' name='sex' required <?php if (isset($sex) && $sex=="m") echo"checked";?> value='m'>
-                            <span>Masculino</span>
+                            Masculino
                         </label>
-                    </div>
-
-                    <div>
                         <label>
-                            <input type='radio' name='sex' required <?php if (isset($sex) && $sex=="f") echo"checked";?> value='f'>
-                            <span>Femenino</span>
+                            <input type='radio' name='sex' <?php if (isset($sex) && $sex=="f") echo"checked";?> value='f'>
+                            Femenino
                         </label>
                     </div>
-
-                </div>
+                </label>
             </div>
 			
 			<div class="form-row">
@@ -150,13 +165,13 @@
                     <span><h4>Horario</h4></span>
 					<span>Entrada</span>
                     <?php
-                        echo "<input type='text' name='scheduleIn' value='".$entrada."'>";
+                        echo "<input maxlength='7' type='text' name='scheduleIn' value='".$entrada."'>";
                     ?>
                 </label>
 				<label>
 					<span>Salida</span>
                     <?php
-                        echo "<input type='text' name='scheduleOut' value='".$salida."'>";
+                        echo "<input maxlength='7' type='text' name='scheduleOut' value='".$salida."'>";
                     ?>
 				</label>
             </div>
@@ -165,7 +180,7 @@
                 <label>
                     <span>Teléfonos</span>
                     <?php
-                        echo "<input type='text' name='tel' value='".$phone."'>";
+                        echo "<input maxlength='10' type='text' name='tel' value='".$phone."'>";
                     ?>
                 </label>
             </div>
@@ -174,7 +189,7 @@
                 <label>
                     <span>Experiencia</span>
                     <?php
-                        echo "<textarea name='exp' rows='10' cols='30'>".$exp."</textarea>";
+                        echo "<textarea data-limit-rows='true' name='exp' rows='8' cols='30' onkeyup='EnforceMaximumLength(this,500)'>".$exp."</textarea>";
                     ?>
                 </label>
             </div>
@@ -183,7 +198,7 @@
                 <label>
                     <span>Descripción</span>
                     <?php
-                        echo "<textarea name='description' rows='10' cols='30'>".$desc."</textarea>";
+                        echo "<textarea data-limit-rows='true' name='description' rows='8' cols='30' onkeyup='EnforceMaximumLength(this,500)'>".$desc."</textarea>";
                     ?>
                 </label>
             </div>

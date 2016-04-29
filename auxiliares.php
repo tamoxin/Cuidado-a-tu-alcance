@@ -1,6 +1,86 @@
 <?php
 	SESSION_START();
 	$_SESSION['attempt'] = "0";
+	
+	$name = "";
+	$desc = "";
+	$exp = "";
+	$phone = "";
+	$entrada = "";
+	$salida = "";
+	$sex = "";
+	$age = "";
+	$img = "";
+	$sel_user = "SELECT description,age,entrada,salida,experience,sex,age,telephone,name FROM users";
+	$nurse = "";
+	
+	$con= mysqli_connect("localhost", "root", "", "enfermeras") or die("Unable to connect");
+	
+	$run_user = mysqli_query($con, $sel_user);
+    
+    $check_user = mysqli_num_rows($run_user); 
+	
+	if($check_user > 0) {
+        //si hubo respuesta a la consulta
+		while ($arreglo = mysqli_fetch_array($run_user, MYSQLI_ASSOC)) {
+        		$tabla['name'][] = $arreglo['name'];
+        		$tabla['exp'][] = $arreglo['experience'];
+        		$tabla['desc'][] = $arreglo['description'];
+				$tabla['entrada'][] = $arreglo['entrada'];
+				$tabla['salida'][] = $arreglo['salida'];
+				$tabla['sex'][] = $arreglo['sex'];
+				$tabla['phone'][] = $arreglo['telephone'];
+				$tabla['age'][] = $arreglo['age'];
+		}
+		
+		for ($x=0; $x <= count($tabla['name'])-1; $x++){
+			$name = $tabla['name'][$x];
+			$desc = $tabla['desc'][$x];
+			$exp = $tabla['exp'][$x];
+			$phone = $tabla['phone'][$x];
+			$entrada = $tabla['entrada'][$x];
+			$salida = $tabla['salida'][$x];
+			$age = $tabla['age'][$x];
+			$sex = $tabla['sex'][$x];
+			if($sex == 'm') {
+				$img = "'img/enfermero.png'";
+			} else if($sex = 'f') { 
+				$img = "'img/enfermera.png'";
+			}
+			
+			$nurse.= 
+						"<li>
+							<div class='well'>
+								<div class='row'>
+									<div class='col-md-6'>
+										<img src=".$img." class='img-responsive' alt='Avatar de enfermera' align='center'/>
+									</div>
+									<div class='col-md-6'>
+										<h3 align='center'>
+											<a href='viewprofile.php'>".$name."</a>
+										</h3>
+									</div>
+								</div>
+								<br>
+								<div class='row'><div class='col-md-12'><h5><b>Edad: </b>".$age."</h5></div></div>
+								<div class='row'><div class='col-md-12'><h5><b>Horario: </b>".$entrada."-".$salida."</h5></div></div>
+								<div class='row'><div class='col-md-12'><h5><b>Descripción: </b>".$desc."</h5></div></div>
+								<div class='row'><div class='col-md-12'><h5><b>Experiencia: </b>".$exp."</h5></div></div>
+								<div class='row'><div class='col-md-12'><h5><b>Teléfono: </b>".$phone."</h5></div></div>
+							</div>
+						</li>";
+		}
+		
+		mysqli_free_result($run_user);
+        mysqli_close($con); 
+    }
+    else {
+        $_SESSION['attempt'] = $_SESSION['attempt'] + 1;
+        mysql_close();
+        header('Location: login.php');
+    }   
+	
+	
 ?>
 
 
@@ -17,7 +97,7 @@
 	</style>
 
 	<title>Cuidado a tu alcance</title>
-    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+	<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
 	<meta charset="utf-8">
 	<meta name="author" content="pixelhint.com">
 	<meta name="description" content="La casa free real state fully responsive html5/css3 home page website template"/>
@@ -25,6 +105,7 @@
 	
 	<link rel="stylesheet" type="text/css" href="css/reset.css">
 	<link rel="stylesheet" type="text/css" href="css/responsive.css">
+	<link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
 
 	<script type="text/javascript" src="js/jquery.js"></script>
 	<script type="text/javascript" src="js/main.js"></script>
@@ -56,152 +137,12 @@
 	</section><!--  end hero section  -->
 
 
-	<section class="search">
-		<div class="wrapper">
-			<form action="#" method="post">
-				<input type="text" id="search" name="search" placeholder="Qué buscas?"  autocomplete="off"/>
-				<input type="submit" id="submit_search" name="submit_search"/>
-			</form>
-			<a href="#" class="advanced_search_icon" id="advanced_search_btn"></a>
-		</div>
-
-		<div class="advanced_search">
-			<div class="wrapper">
-				<span class="arrow"></span>
-				<form action="#" method="post">
-					<div class="search_fields">
-						<input type="text" class="float" id="check_in_date" name="check_in_date" placeholder="Check In Date"  autocomplete="off">
-
-						<hr class="field_sep float"/>
-
-						<input type="text" class="float" id="check_out_date" name="check_out_date" placeholder="Check Out Date"  autocomplete="off">
-					</div>
-					<div class="search_fields">
-						<input type="text" class="float" id="min_price" name="min_price" placeholder="Min. Price"  autocomplete="off">
-
-						<hr class="field_sep float"/>
-
-						<input type="text" class="float" id="max_price" name="max_price" placeholder="Max. price"  autocomplete="off">
-					</div>
-					<input type="text" id="keywords" name="keywords" placeholder="Keywords"  autocomplete="off">
-					<input type="submit" id="submit_search" name="submit_search"/>
-				</form>
-			</div>
-		</div><!--  end advanced search section  -->
-	</section><!--  end search section  -->
-
-
 	<section class="listings">
 		<div class="wrapper">
 			<ul class="properties_list">
-				<li>
-					<a href="#">
-						<img src="img/property_1.jpg" alt="" title="" class="property_img"/>
-					</a>
-					<span class="price">$2500</span>
-					<div class="property_details">
-						<h1>
-							<a href="#">Fuisque dictum tortor at purus libero</a>
-						</h1>
-						<h2>2 kitchens, 2 bed, 2 bath... <span class="property_size">(288ftsq)</span></h2>
-					</div>
-				</li>
-				<li>
-					<a href="#">
-						<img src="img/property_2.jpg" alt="" title="" class="property_img"/>
-					</a>
-					<span class="price">$1000</span>
-					<div class="property_details">
-						<h1>
-							<a href="#">Fuisque dictum tortor at purus libero</a>
-						</h1>
-						<h2>2 kitchens, 2 bed, 2 bath... <span class="property_size">(288ftsq)</span></h2>
-					</div>
-				</li>
-				<li>
-					<a href="#">
-						<img src="img/property_3.jpg" alt="" title="" class="property_img"/>
-					</a>
-					<span class="price">$500</span>
-					<div class="property_details">
-						<h1>
-							<a href="#">Fuisque dictum tortor at purus libero</a>
-						</h1>
-						<h2>2 kitchens, 2 bed, 2 bath... <span class="property_size">(288ftsq)</span></h2>
-					</div>
-				</li>
-				<li>
-					<a href="#">
-						<img src="img/property_1.jpg" alt="" title="" class="property_img"/>
-					</a>
-					<span class="price">$2500</span>
-					<div class="property_details">
-						<h1>
-							<a href="#">Fuisque dictum tortor at purus libero</a>
-						</h1>
-						<h2>2 kitchens, 2 bed, 2 bath... <span class="property_size">(288ftsq)</span></h2>
-					</div>
-				</li>
-				<li>
-					<a href="#">
-						<img src="img/property_2.jpg" alt="" title="" class="property_img"/>
-					</a>
-					<span class="price">$1000</span>
-					<div class="property_details">
-						<h1>
-							<a href="#">Fuisque dictum tortor at purus libero</a>
-						</h1>
-						<h2>2 kitchens, 2 bed, 2 bath... <span class="property_size">(288ftsq)</span></h2>
-					</div>
-				</li>
-				<li>
-					<a href="#">
-						<img src="img/property_3.jpg" alt="" title="" class="property_img"/>
-					</a>
-					<span class="price">$500</span>
-					<div class="property_details">
-						<h1>
-							<a href="#">Fuisque dictum tortor at purus libero</a>
-						</h1>
-						<h2>2 kitchens, 2 bed, 2 bath... <span class="property_size">(288ftsq)</span></h2>
-					</div>
-				</li>
-				<li>
-					<a href="#">
-						<img src="img/property_1.jpg" alt="" title="" class="property_img"/>
-					</a>
-					<span class="price">$2500</span>
-					<div class="property_details">
-						<h1>
-							<a href="#">Fuisque dictum tortor at purus libero</a>
-						</h1>
-						<h2>2 kitchens, 2 bed, 2 bath... <span class="property_size">(288ftsq)</span></h2>
-					</div>
-				</li>
-				<li>
-					<a href="#">
-						<img src="img/property_2.jpg" alt="" title="" class="property_img"/>
-					</a>
-					<span class="price">$1000</span>
-					<div class="property_details">
-						<h1>
-							<a href="#">Fuisque dictum tortor at purus libero</a>
-						</h1>
-						<h2>2 kitchens, 2 bed, 2 bath... <span class="property_size">(288ftsq)</span></h2>
-					</div>
-				</li>
-				<li>
-					<a href="#">
-						<img src="img/property_3.jpg" alt="" title="" class="property_img"/>
-					</a>
-					<span class="price">$500</span>
-					<div class="property_details">
-						<h1>
-							<a href="#">Fuisque dictum tortor at purus libero</a>
-						</h1>
-						<h2>2 kitchens, 2 bed, 2 bath... <span class="property_size">(288ftsq)</span></h2>
-					</div>
-				</li>
+				<!--Parte dinámica-->
+				<?php echo $nurse;?>
+				<!--Fin de la parte dinámica-->
 			</ul>
 			<div class="more_listing">
 				<a href="#" class="more_listing_btn">Volver arriba</a>
@@ -214,31 +155,9 @@
 			<ul>
 				<li class="links">
 					<ul>
-						<li><a href="#">About</a></li>
-						<li><a href="#">Support</a></li>
-						<li><a href="#">Terms</a></li>
-						<li><a href="#">Policy</a></li>
-						<li><a href="#">Contact</a></li>
-					</ul>
-				</li>
-
-				<li class="links">
-					<ul>
-						<li><a href="#">Appartements</a></li>
-						<li><a href="#">Houses</a></li>
-						<li><a href="#">Villas</a></li>
-						<li><a href="#">Mansions</a></li>
-						<li><a href="#">...</a></li>
-					</ul>
-				</li>
-
-				<li class="links">
-					<ul>
-						<li><a href="#">New York</a></li>
-						<li><a href="#">Los Anglos</a></li>
-						<li><a href="#">Miami</a></li>
-						<li><a href="#">Washington</a></li>
-						<li><a href="#">...</a></li>
+						<li><a href="auxiliares.php">Auxiliares</a></li>
+						<li><a href="acerca.php">Acerca</a></li>
+						<li><a href="contacto.php">Contacto</a></li>
 					</ul>
 				</li>
 
@@ -253,7 +172,7 @@
 		</div>
 
 		<div class="copyrights wrapper">
-			Copyright © 2015 <a href="http://pixelhint.com" target="_blank" class="ph_link" title="Download more free Templates">Pixelhint.com</a>. All Rights Reserved.
+			Copyright © 2016 <a href="index.php" target="_blank" class="ph_link" title="Yo te vendo">Yo te vendo</a>. Todos los derechos reservados.
 		</div>
 	</footer><!--  end footer  -->
 	

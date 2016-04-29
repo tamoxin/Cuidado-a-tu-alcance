@@ -14,6 +14,10 @@
             height: auto;
 			background-size: 100% auto !important;
 		}
+		
+		.black {
+			color: #000000;
+		}
 	</style>
 
 	<title>Cuidado a tu alcance</title>
@@ -59,11 +63,11 @@
 	<section class="listings">
 		<div class="wrapper">
 			<h2>¿De qué trata el proyecto?</h2>
-			<p>Es un proyecto creado por 9 alumnos del Tecnológico de Monterrey Campus Tampico, que encontraron un área de oportunidad para el emprendimiento social. </p>
+			<h4 class="black">Es un proyecto creado por 9 alumnos del Tecnológico de Monterrey Campus Tampico, que encontraron un área de oportunidad para el emprendimiento social. </h4>
 			<br>
-			<p>Actualmente en Tampico, Tamaulipas, existe una gran demanda de auxiliares de enfermeria, pero por la falta de algún centro o agencia de estos, la gente que busca este servicio no puede contratarlos. Debido a esta problemática se crea "Cuidado a tu alcance".</p>
+			<h4 class="black">Actualmente en Tampico, Tamaulipas, existe una gran demanda de auxiliares de enfermeria, pero por la falta de algún centro o agencia de estos, la gente que busca este servicio no puede contratarlos. Debido a esta problemática se crea "Cuidado a tu alcance".</h4>
 			<br>
-			<p>El proyecto consiste en la elaboración de una página web que busca vincular a los egresados de los talleres impartidos en la zona, con situaciones económicas vulnerables, con posibles clientes que requieran algún servicio relacionado con enfermería.</p>
+			<h4 class="black">El proyecto consiste en la elaboración de una página web que busca vincular a los egresados de los talleres impartidos en la zona, con situaciones económicas vulnerables, con posibles clientes que requieran algún servicio relacionado con enfermería.</h4>
 		</div>
 	</section>	<!--  end listing section  -->
 
@@ -72,31 +76,9 @@
 			<ul>
 				<li class="links">
 					<ul>
-						<li><a href="#">About</a></li>
-						<li><a href="#">Support</a></li>
-						<li><a href="#">Terms</a></li>
-						<li><a href="#">Policy</a></li>
-						<li><a href="#">Contact</a></li>
-					</ul>
-				</li>
-
-				<li class="links">
-					<ul>
-						<li><a href="#">Appartements</a></li>
-						<li><a href="#">Houses</a></li>
-						<li><a href="#">Villas</a></li>
-						<li><a href="#">Mansions</a></li>
-						<li><a href="#">...</a></li>
-					</ul>
-				</li>
-
-				<li class="links">
-					<ul>
-						<li><a href="#">New York</a></li>
-						<li><a href="#">Los Anglos</a></li>
-						<li><a href="#">Miami</a></li>
-						<li><a href="#">Washington</a></li>
-						<li><a href="#">...</a></li>
+						<li><a href="auxiliares.php">Auxiliares</a></li>
+						<li><a href="acerca.php">Acerca</a></li>
+						<li><a href="contacto.php">Contacto</a></li>
 					</ul>
 				</li>
 
@@ -111,7 +93,7 @@
 		</div>
 
 		<div class="copyrights wrapper">
-			Copyright © 2015 <a href="http://pixelhint.com" target="_blank" class="ph_link" title="Download more free Templates">Pixelhint.com</a>. All Rights Reserved.
+			Copyright © 2016 <a href="index.php" target="_blank" class="ph_link" title="Cuidado a tu alcance">Cuidado a tu alcance</a>. Todos los derechos reservados.
 		</div>
 	</footer><!--  end footer  -->
 	

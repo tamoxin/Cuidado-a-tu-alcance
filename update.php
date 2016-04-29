@@ -21,7 +21,7 @@ if(isset($_POST['guardar'])){
 	$newSal=$_POST['scheduleOut'];
 	$newExp=$_POST['exp'];
 	$newSex=$_POST['sex'];
-	$sql="UPDATE users SET email='$newEmail', description='$newDesc', age='$newAge', entrada='$newEnt', salida='$newSal', experience='$newExp', telephone='$newTel', name='$newName' WHERE user_id='$id'";
+	$sql="UPDATE users SET email='$newEmail', description='$newDesc', age='$newAge', entrada='$newEnt', salida='$newSal', experience='$newExp', sex='$newSex', telephone='$newTel', name='$newName' WHERE user_id='$id'";
 
 	$con->query($sql);
 

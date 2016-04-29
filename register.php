@@ -53,7 +53,11 @@ if($nombrereg&&$passreg&&$mailreg&&$codereg){
 			$_SESSION['wrong_code'] = 1;
 			header('Location: login.php');
 		}   
-    }
+    } else {
+		 $_SESSION['wrong_code'] = 1;
+        mysql_close();
+        header('Location: login.php');
+	}
 }
 else{
 	echo "Fill out every field";
